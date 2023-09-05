@@ -9,42 +9,37 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserRegistration.Repository;
+using UserRegistration.Services;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UserRegistration
 {
     public partial class Form1 : Form
     {
-        //Declare an object of UserInfoEntities
-        UserInfoEntities _db;
+        
 
         public Form1()
         {
-            InitializeComponent();
-
-            // Instantiate database
-            _db = new UserInfoEntities();
+            InitializeComponent();            
         }
 
         private void submit_Click(object sender, EventArgs e)
         {
-            // save user information in database
-            SaveUser();
-            
-            MessageBox.Show("successful registration");                        
-        }        
+            IUserRepository userRepository = new UserRepository();
 
-        private void SaveUser()
-        {
             User user = new User();
             user.first_name = first_name.Text.Trim();
             user.last_name = last_name.Text.Trim();
             user.email = email.Text.Trim();
-            user.phone = phone.Text.Trim();
-            _db.Users.Add(user);
-            _db.SaveChanges();
-        }
-            
+            user.phone = phone.Text.Trim();            
+            userRepository.Insert(user);            
+            userRepository.Save();            
+
+            MessageBox.Show("successful registration");                        
+        }        
+
+                    
         private void phone_Validating(object sender, CancelEventArgs e)
         {
             string errorMsg;
