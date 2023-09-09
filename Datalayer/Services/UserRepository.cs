@@ -10,12 +10,12 @@ namespace Datalayer.Services
     public class UserRepository : IUserRepository
     {
         //Declare an object of UserInfoEntities
-        UserInfoEntities _db;
+        UserInfoEntities1 _db;
 
         public UserRepository() 
         {
             // Instantiate database
-            _db = new UserInfoEntities();
+            _db = new UserInfoEntities1();
         }
         public void Insert(User user)
         {
