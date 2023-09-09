@@ -4,9 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserRegistration.Repository;
-
-namespace UserRegistration.Services
+using Datalayer.Repository;
+namespace Datalayer.Services
 {
     public class UserRepository : IUserRepository
     {

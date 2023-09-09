@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserRegistration
+namespace Datalayer
 {
     using System;
     using System.Data.Entity;
